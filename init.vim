@@ -32,6 +32,9 @@
  " Auto complete
  Plug 'Valloric/YouCompleteMe'
 
+ " Seamless tmux navigation
+ Plug 'christoomey/vim-tmux-navigator'
+
  " Add plugins to &runtimepath
  call plug#end()
 
@@ -44,6 +47,13 @@ let g:airline_powerline_fonts=1
 "R plugin vertival split
 let R_vsplit=1
 let R_assign=0
+
+" Easy Align
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " vimcmdline options
 let cmdline_vsplit = 1        " Split the window vertically
