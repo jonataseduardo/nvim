@@ -93,6 +93,7 @@ set tw=79                               "Break line on column 79
 set visualbell                          "if an error occur the screen will flash
 set t_Co=256                            "allow 256 collor terminal 
 set background=dark
+set timeoutlen=1000 ttimeoutlen=0
 
 set showcmd
 set showmode
@@ -149,6 +150,9 @@ nnoremap Y y$
 "Buffer navigation
 nnoremap <leader>b :ls<cr>:buffer 
 nnoremap <leader>q :bd<cr>
+
+
+"Make ultisnips and ycm compatible
 
 
 " Vim  
