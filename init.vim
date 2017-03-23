@@ -35,6 +35,9 @@
  " Seamless tmux navigation
  Plug 'christoomey/vim-tmux-navigator'
 
+ " Thresaurus synonyms dictionary (http:thesauarus.com/)
+ Plug 'beloglazov/vim-online-thesaurus'
+
  " Add plugins to &runtimepath
  call plug#end()
 
