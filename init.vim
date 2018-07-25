@@ -17,6 +17,9 @@
  "R-vim plugin
  Plug 'jalvesaq/Nvim-R'
 
+ "send lines to interpreter plugin
+ Plug 'jalvesaq/vimcmdline'
+
  "Latex plugin 
  Plug 'LaTex-Box-Team/LaTex-Box'
 
@@ -38,6 +41,9 @@
  " Thresaurus synonyms dictionary (http:thesauarus.com/)
  Plug 'beloglazov/vim-online-thesaurus'
 
+ " Send lines to Ipython
+ Plug 'hkupty/iron.nvim' 
+
  " Add plugins to &runtimepath
  call plug#end()
 
@@ -48,7 +54,7 @@
 let g:airline_powerline_fonts=1
 
 "R plugin vertival split
-let R_vsplit=1
+"let R_vsplit=1
 let R_assign=0
 
 " Easy Align
@@ -141,12 +147,6 @@ inoremap <down> <nop>
 nnoremap j gj
 nnoremap k gk
 
-" Splitting Widows and Navigating
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
 " Coping to the end of line
 nnoremap Y y$
 
@@ -192,7 +192,6 @@ augroup END
 "=============================================================================
 
 
-
 " Python
 "=============================================================================
 augroup python
@@ -204,3 +203,59 @@ augroup python
         \:let g:flake8_ignore="C901"
         "\:let g:flake8_max_complexity=10
 augroup END
+
+" deactivate default mappings
+let g:iron_map_defaults=0
+" define custom mappings for the python filetype
+augroup ironmapping
+    autocmd!
+    autocmd Filetype python nmap <buffer> <localleader>l <Plug>(iron-send-motion)
+    autocmd Filetype python vmap <buffer> <localleader>l <Plug>(iron-send-motion)
+    autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
+augroup END
+
+let g:iron_repl_open_cmd="vsplit" 
+
+" from h terminal-input
+" To map <Esc> to exit terminal-mode: >
+tnoremap <Esc> <C-\><C-n>
+
+"To simulate |i_CTRL-R| in terminal-mode: >
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+
+"To use `CTRL+{h,j,k,l}` to navigate windows from any mode: >
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+inoremap <C-h> <C-\><C-N><C-w>h
+inoremap <C-j> <C-\><C-N><C-w>j
+inoremap <C-k> <C-\><C-N><C-w>k
+inoremap <C-l> <C-\><C-N><C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" vimcmdline mappings
+let cmdline_map_start          = '<LocalLeader>'
+let cmdline_map_send           = '<Space>'
+let cmdline_map_send_and_stay  = '<LocalLeader><Space>'
+let cmdline_map_source_fun     = '<LocalLeader>f'
+let cmdline_map_send_paragraph = '<LocalLeader>p'
+let cmdline_map_send_block     = '<LocalLeader>b'
+let cmdline_map_quit           = '<LocalLeader>q'
+
+" vimcmdline options
+let cmdline_vsplit      = 1      " Split the window vertically
+let cmdline_esc_term    = 1      " Remap <Esc> to :stopinsert in Neovim's terminal
+let cmdline_in_buffer   = 1      " Start the interpreter in a Neovim's terminal
+let cmdline_term_height = 15     " Initial height of interpreter window or pane
+let cmdline_term_width  = 80     " Initial width of interpreter window or pane
+let cmdline_tmp_dir     = '/tmp' " Temporary directory to save files
+let cmdline_outhl       = 1      " Syntax highlight the output
+let cmdline_auto_scroll = 1      " Keep the cursor at the end of terminal (nvim)
+
+"Set ipython2 for python for now
+let cmdline_app           = {}
+let cmdline_app['python'] = 'ipython2'
