@@ -11,9 +11,6 @@
  " Group dependencies, vim-snippets depends on ultisnips
  Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
- " On-demand loading
- Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
  "R-vim plugin
  Plug 'jalvesaq/Nvim-R'
 
@@ -41,14 +38,18 @@
  " Thresaurus synonyms dictionary (http:thesauarus.com/)
  Plug 'beloglazov/vim-online-thesaurus'
 
- " Send lines to Ipython
- Plug 'hkupty/iron.nvim' 
-
+ " falcon color 
+ Plug 'fenetikm/falcon'
+ 
  " Add plugins to &runtimepath
  call plug#end()
 
 
 "Plugins configuration
+
+colorscheme falcon
+let g:falcon_airline = 1
+let g:airline_theme = 'falcon'
  
 "airline use poweline fonts
 let g:airline_powerline_fonts=1
@@ -131,8 +132,8 @@ set wildignore=*.o,*.obj,*~     "stuff to ignore when tab completing
 set backspace=indent,eol,start
 
 " Spell
-noremap <F12> :setlocal spell! spelllang=pt<cr>
-noremap <leader><F12> :setlocal spell! spelllang=en<cr>
+noremap <leader><F12> :setlocal spell! spelllang=pt<cr>
+noremap <F12> :setlocal spell! spelllang=en<cr>
 
 " Setting things to move around using vim spirit
 nnoremap <up> <nop>
@@ -153,9 +154,7 @@ nnoremap Y y$
 nnoremap <leader>b :ls<cr>:buffer 
 nnoremap <leader>q :bd<cr>
 
-
 "Make ultisnips and ycm compatible
-
 
 " Vim  
 "=============================================================================
@@ -189,7 +188,6 @@ augroup file_clike
      autocmd Filetype c,cpp let g:tex_conceal="adgm"
 augroup END
 "=============================================================================
-
 
 " Python
 "=============================================================================
