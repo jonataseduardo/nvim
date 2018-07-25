@@ -53,8 +53,7 @@
 "airline use poweline fonts
 let g:airline_powerline_fonts=1
 
-"R plugin vertival split
-"let R_vsplit=1
+"R plugin _ not maps into <-  
 let R_assign=0
 
 " Easy Align
