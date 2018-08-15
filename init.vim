@@ -17,11 +17,11 @@
  "send lines to interpreter plugin
  Plug 'jalvesaq/vimcmdline'
 
- "Latex plugin 
- Plug 'LaTex-Box-Team/LaTex-Box'
-
  "Send lines to client in terminal 
  Plug 'jalvesaq/vimcmdline'
+
+ "Latex plugin 
+ Plug 'LaTex-Box-Team/LaTex-Box'
 
  "Git integration 
  Plug 'tpope/vim-fugitive'
@@ -123,7 +123,6 @@ nnoremap Y y$
 "Buffer navigation
 nnoremap <leader>b :ls<cr>:buffer 
 nnoremap <leader>q :bd<cr>
-
 
 " from h terminal-input
 " To map <Esc> to exit terminal-mode: >
