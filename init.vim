@@ -138,7 +138,7 @@ let g:airline_powerline_fonts=1
 
 "### Nvim-R  ### 
 let R_assign=0                  "_ will not maps into <-  
-let R_nvimpager='horizontaly'   " open help with a horizontal split
+let R_nvimpager='horizontal'   " open help with a horizontal split
 
 " Easy Align
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
