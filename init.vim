@@ -45,24 +45,6 @@
  call plug#end()
 
 
-"Plugins configuration
-
-colorscheme falcon
-let g:falcon_airline = 1
-let g:airline_theme = 'falcon'
- 
-"airline use poweline fonts
-let g:airline_powerline_fonts=1
-
-"R plugin _ not maps into <-  
-let R_assign=0
-
-" Easy Align
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
 
 "Genaralsettings
 set encoding=utf-8
@@ -145,6 +127,25 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" #### Plugins configurations #####
+
+colorscheme falcon
+let g:falcon_airline = 1
+let g:airline_theme = 'falcon'
+ 
+"airline use poweline fonts
+let g:airline_powerline_fonts=1
+
+"### Nvim-R  ### 
+let R_assign=0                  "_ will not maps into <-  
+let R_nvimpager='horizontaly'   " open help with a horizontal split
+
+" Easy Align
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " ### vimcmdline ### 
 "
