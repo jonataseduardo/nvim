@@ -14,9 +14,6 @@
  "R-vim plugin
  Plug 'jalvesaq/Nvim-R'
 
- "send lines to interpreter plugin
- Plug 'jalvesaq/vimcmdline'
-
  "Send lines to client in terminal 
  Plug 'jalvesaq/vimcmdline'
 
@@ -35,7 +32,7 @@
  " Thresaurus synonyms dictionary (http:thesauarus.com/)
  Plug 'beloglazov/vim-online-thesaurus'
 
- " falcon color 
+ " falcon colorscheme
  Plug 'fenetikm/falcon'
 
  " Autocomplete
