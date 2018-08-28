@@ -83,6 +83,9 @@ set wildignore=*.o,*.obj,*~     "stuff to ignore when tab completing
 " Allow backspacing on everything in insert mode
 set backspace=indent,eol,start
 
+" Save with w!! files with sudo permition
+cnoremap w!! execute 'silent! write sudo tee % >/dev/null' <bar> edit!
+
 " Spell
 noremap <leader><F12> :setlocal spell! spelllang=pt<cr>
 noremap <F12> :setlocal spell! spelllang=en<cr>
