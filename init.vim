@@ -37,7 +37,10 @@
 
  " Autocomplete
  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
- 
+
+ " Autocomplete python
+ Plug 'zchee/deoplete-jedi'
+
  " Add plugins to &runtimepath
  call plug#end()
 
@@ -139,6 +142,9 @@ let g:airline_powerline_fonts=1
 "### Nvim-R  ### 
 let R_assign=0                  "_ will not maps into <-  
 let R_nvimpager='horizontal'   " open help with a horizontal split
+let R_complete = 1 " Include names of objects if there is no argument
+vnoremap <Space> <Plug>RDSendSelection
+nnoremap <Space> <Plug>RDSendLine
 
 " Easy Align
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
@@ -198,3 +204,12 @@ let g:LatexBox_latexmk_async=1
 let g:LatexBox_quickfix=2
 let g:LatexBox_fold_text=1
 let g:LatexBox_fold_envs=1
+
+
+" Enable deoplete
+let g:deoplete#enable_at_startup=1
+"let g:deoplete#auto_completion_start_length = 0
+"
+"call deoplete#custom#set('jedi', 'debug_enabled', 1)
+"call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
+
