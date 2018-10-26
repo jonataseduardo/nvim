@@ -132,6 +132,8 @@ nnoremap <C-l> <C-w>l
 
 " #### Plugins configurations #####
 
+let g:falcon_background = 0
+let g:falcon_inactive = 1
 colorscheme falcon
 let g:falcon_airline = 1
 let g:airline_theme = 'falcon'
@@ -208,8 +210,7 @@ let g:LatexBox_fold_envs=1
 
 " Enable deoplete
 let g:deoplete#enable_at_startup=1
-"let g:deoplete#auto_completion_start_length = 0
-"
-"call deoplete#custom#set('jedi', 'debug_enabled', 1)
-"call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
+
+" Adding a colorscheme to Slim
+au BufNewFile,BufRead *.slim set filetype=c
 
