@@ -1,0 +1,24 @@
+{
+
+  // coc preferences
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "coc.preferences.formatOnSaveFiletypes": ["python"],
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.timeout": 500,
+  "suggest.minTriggerInputLength": 2,
+  "suggest.acceptSuggestionOnCommitCharacter": true,
+  "suggest.snippetIndicator": "►",
+
+  // python settings
+  "python.jediEnabled": true,
+  "python.autoUpdateLanguageServer": true,
+  "python.autoComplete.addBrackets": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "100"],
+  "python.linting.enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.mypyArgs": ["--max-line-length", "100"],
+  "python.linting.lintOnSave": true,
+  "python.venvPath":"$HOME/.virtualenvs"
+
+}
