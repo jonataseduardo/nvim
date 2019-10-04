@@ -1,4 +1,4 @@
- call plug#begin('~/.config/nvim/plugged')
+ call plug#begin('~/.local/share/nvim/plugged')
 
  " Make sure you use single quotes
 
@@ -30,16 +30,10 @@
  Plug 'christoomey/vim-tmux-navigator'
 
  " Thresaurus synonyms dictionary (http:thesauarus.com/)
- Plug 'beloglazov/vim-online-thesaurus'
+ Plug 'benshuailyu/online-thesaurus-vim'
 
- " falcon colorscheme
- Plug 'fenetikm/falcon'
-
- " Autocomplete
- Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
- " Autocomplete python
- Plug 'zchee/deoplete-jedi'
+ "Assyncrounous grammar checker
+ Plug 'vigoux/LanguageTool.nvim'
 
  " Add plugins to &runtimepath
  call plug#end()
@@ -131,12 +125,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " #### Plugins configurations #####
-
-let g:falcon_background = 0
-let g:falcon_inactive = 1
-colorscheme falcon
-let g:falcon_airline = 1
-let g:airline_theme = 'falcon'
  
 "airline use poweline fonts
 let g:airline_powerline_fonts=1
@@ -213,4 +201,14 @@ let g:deoplete#enable_at_startup=1
 
 " Adding a colorscheme to Slim
 au BufNewFile,BufRead *.slim set filetype=c
+
+
+"hardcoding neovim python 
+let g:python_host_prog = '/home/jonatas/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/home/jonatas/.pyenv/versions/neovim3/bin/python'
+
+
+"Grammar checker
+let g:languagetool_server='$HOME/languagetool/languagetool-standalone/target/LanguageTool-4.7-SNAPSHOT/LanguageTool-4.7-SNAPSHOT/languagetool-server.jar'
+
 
