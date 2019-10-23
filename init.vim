@@ -377,5 +377,5 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-"let g:python3_host_prog = '/home/jonatas/.virtualenvs/py3/bin/python'
-
+let g:python3_host_prog = '/home/jonatas/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '/home/jonatas/.pyenv/versions/neovim2/bin/python' 

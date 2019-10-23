@@ -19,6 +19,6 @@
   "python.linting.mypyEnabled": true,
   "python.linting.mypyArgs": ["--max-line-length", "100"],
   "python.linting.lintOnSave": true,
-  "python.venvPath":"$HOME/.virtualenvs"
+  "python.venvPath":"$HOME/.pyenv"
 
 }
