@@ -15,7 +15,7 @@
  Plug 'jalvesaq/vimcmdline'
 
  "Latex plugin 
- Plug 'LaTex-Box-Team/LaTex-Box'
+ Plug 'lervag/vimtex'
 
  "Git integration 
  Plug 'tpope/vim-fugitive'
@@ -47,6 +47,7 @@
  "Folding for python
  Plug 'tmhedberg/SimpylFold'
 
+ Plug 'gerw/vim-tex-syntax'
 
 " Add plugins to &runtimepath
  call plug#end()
@@ -208,11 +209,8 @@ endif
 let cmdline_app           = {}
 let cmdline_app['python'] = 'ipython'
 
-"" ### LatexBox ###
-"let g:LatexBox_latexmk_async=1
-"let g:LatexBox_quickfix=2
-"let g:LatexBox_fold_text=1
-"let g:LatexBox_fold_envs=1
+"" ### Latex conceal  for indentLine###
+let g:tex_conceal="" 
 
 "Fast Fold 
 nmap zuz <Plug>(FastFoldUpdate)
