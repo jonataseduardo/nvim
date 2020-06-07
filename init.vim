@@ -49,6 +49,8 @@
 
  Plug 'gerw/vim-tex-syntax'
 
+ Plug 'junegunn/limelight.vim'
+
 " Add plugins to &runtimepath
  call plug#end()
 
@@ -64,15 +66,13 @@ set visualbell                          "if an error occur the screen will flash
 set termguicolors                       "allow better collor terminal 
 set background=dark
 set timeoutlen=1000 ttimeoutlen=0
+set clipboard+=unnamedplus
 
 set showcmd
 set showmode
 
 " Better visualization of tabset
 set nolist                               "hide invisible characters
-"set list                                "show invisible characters
-"set listchars=tab:▸-,trail:¬
-"set listchars=tab:▸-,eol:¬
 
 " Indent settings
 set tabstop=2                           "tabspace = 2
@@ -262,7 +262,17 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
-" Use tab for trigger completion with characters ahead and navigate.
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-dictionary',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-json', 
+  \ 'coc-python',
+  \ 'coc-texlab',
+  \ ]
+
+
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -410,5 +420,31 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-let g:python3_host_prog = '/home/jonatas/.pyenv/versions/neovim3/bin/python'
+let g:python3_host_prog = '/home/jonatas/.pyenv/versions/3.7.5/envs/py3/bin/python'
 let g:python_host_prog = '/home/jonatas/.pyenv/versions/neovim2/bin/python' 
+
+
+" Limelight config for falcon colorscheme
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
