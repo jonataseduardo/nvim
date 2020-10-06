@@ -1,55 +1,43 @@
  call plug#begin('~/.local/share/nvim/plugged')
 
  " Make sure you use single quotes
-
- " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
- Plug 'junegunn/vim-easy-align'
-
- " Any valid git URL is allowed
- Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
- "R-vim plugin
- Plug 'jalvesaq/Nvim-R'
-
- "Send lines to client in terminal 
- Plug 'jalvesaq/vimcmdline'
-
- "Latex plugin 
- Plug 'lervag/vimtex'
-
- "Git integration 
- Plug 'tpope/vim-fugitive'
-
- " eye candy
- Plug 'liuchengxu/eleline.vim'
-
- " Seamless tmux navigation
- Plug 'christoomey/vim-tmux-navigator'
-
- " Thresaurus synonyms dictionary (http:thesauarus.com/)
- Plug 'benshuailyu/online-thesaurus-vim'
-
- "Assyncrounous grammar checker
- Plug 'vigoux/LanguageTool.nvim'
-
- " falcon colorscheme
- Plug 'fenetikm/falcon'
-
- " build coc from source code
- Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
- "IndentLine
- Plug 'Yggdroot/indentLine'
- 
+ "
  "FastFolding 
  Plug 'Konfekt/FastFold'
 
  "Folding for python
  Plug 'tmhedberg/SimpylFold'
 
+ " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+ Plug 'junegunn/vim-easy-align'
+
+ "Latex plugins
+ Plug 'lervag/vimtex'
  Plug 'gerw/vim-tex-syntax'
 
- Plug 'junegunn/limelight.vim'
+ "Git integration 
+ Plug 'tpope/vim-fugitive'
+ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+ " eye candy
+ Plug 'liuchengxu/eleline.vim'
+ " Seamless tmux navigation
+ Plug 'christoomey/vim-tmux-navigator'
+
+ " Thresaurus synonyms dictionary (http:thesauarus.com/)
+ "Plug 'benshuailyu/online-thesaurus-vim'
+
+ "Assyncrounous grammar checker
+ " Plug 'vigoux/LanguageTool.nvim'
+
+ "IndentLine (show vertical lines on indents)
+ Plug 'Yggdroot/indentLine'
+
+ " Insert or delete brakets, parens, quotes in pair. 
+ Plug 'jiangmiao/auto-pairs'
+
+ " nvim repl
+ Plug 'kassio/neoterm'
 
 " Add plugins to &runtimepath
  call plug#end()
@@ -57,6 +45,7 @@
 
 
 "Genaralsettings
+set relativenumber
 set encoding=utf-8
 set incsearch                           "find next match as we type the search
 set hlsearch                            "highlight search
@@ -141,20 +130,9 @@ nnoremap <C-l> <C-w>l
 
 " #### Plugins configurations #####
 
-let g:falcon_background = 0
-let g:falcon_inactive = 1
-colorscheme falcon
-
-set laststatus=2 
 "eleline use poweline fonts
+set laststatus=2 
 let g:eleline_powerline_fonts = 1
-
-"### Nvim-R  ### 
-let R_assign=0                  "_ will not maps into <-  
-let R_nvimpager='horizontal'   " open help with a horizontal split
-let R_complete = 1 " Include names of objects if there is no argument
-vnoremap <Space> <Plug>RDSendSelection
-nnoremap <Space> <Plug>RDSendLine
 
 " Easy Align
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
@@ -162,52 +140,6 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" ### vimcmdline ### 
-"
-" vimcmdline mappings
-let cmdline_map_start          = '<LocalLeader>'
-let cmdline_map_send           = '<Space>'
-let cmdline_map_send_and_stay  = '<LocalLeader><Space>'
-let cmdline_map_source_fun     = '<LocalLeader>f'
-let cmdline_map_send_paragraph = '<LocalLeader>p'
-let cmdline_map_send_block     = '<LocalLeader>b'
-let cmdline_map_quit           = '<LocalLeader>q'
-
-" vimcmdline options
-let cmdline_vsplit      = 1      " Split the window vertically
-let cmdline_esc_term    = 1      " Remap <Esc> to :stopinsert in Neovim's terminal
-let cmdline_in_buffer   = 1      " Start the interpreter in a Neovim's terminal
-let cmdline_term_height = 15     " Initial height of interpreter window or pane
-let cmdline_term_width  = 80     " Initial width of interpreter window or pane
-let cmdline_tmp_dir     = '/tmp' " Temporary directory to save files
-let cmdline_outhl       = 1      " Syntax highlight the output
-let cmdline_auto_scroll = 1      " Keep the cursor at the end of terminal (nvim)
-
-if &t_Co == 256
-  let cmdline_color_input = 247
-  let cmdline_color_normal = 39
-  let cmdline_color_number = 51
-  let cmdline_color_integer = 51
-  let cmdline_color_float = 51
-  let cmdline_color_complex = 51
-  let cmdline_color_negnum = 183
-  let cmdline_color_negfloat = 183
-  let cmdline_color_date = 43
-  let cmdline_color_true = 78
-  let cmdline_color_false = 203
-  let cmdline_color_inf = 39
-  let cmdline_color_constant = 75
-  let cmdline_color_string = 79
-  let cmdline_color_stderr = 33
-  let cmdline_color_error = 15
-  let cmdline_color_warn = 1
-  let cmdline_color_index = 186
-endif
-
-"Set ipython2 for python for now
-let cmdline_app           = {}
-let cmdline_app['python'] = 'ipython'
 
 "" ### Latex conceal  for indentLine###
 let g:tex_conceal="" 
@@ -236,215 +168,24 @@ let g:SimpylFold_fold_import = 1
 " Adding a colorscheme to Slim
 au BufNewFile,BufRead *.slim set filetype=c
 
-"Grammar checker
-let g:languagetool_server='$HOME/languagetool/languagetool-standalone/target/LanguageTool-4.7-SNAPSHOT/LanguageTool-4.7-SNAPSHOT/languagetool-server.jar'
+" Vimtex tex_flavor 
+let g:tex_flavor = 'latex'
 
-" ######################"
-" ### vim coc config ###"
-" ######################"
+"Neoterm 
+let g:neoterm_default_mod = 'vertical' 
+" This is not working (dont know why)
+" let g:neoterm_direct_open_repl = 1
+" let g:neoterm_repl_python = 'ipython'
+" let g:neoterm_repl_enable_ipython_paste_magic = 0
 
-"if hidden is not set, TextEdit might fail.
-set hidden
+"Workaround to open ipython and r in the right split' 
+au FileType python nnoremap <leader>s :T ipython --no-autoindent<CR><C-w>R
+au FileType r nnoremap <leader>s :T R<CR><C-w>R
+nnoremap <leader>q :Tclose<CR>
+nnoremap <Space> :TREPLSendLine<CR>
+vnoremap <Space> :TREPLSendSelection<CR> 
 
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
+"let g:neoterm_size=40
 
-" Better display for messages
-set cmdheight=2
-
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-dictionary',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-json', 
-  \ 'coc-python',
-  \ 'coc-texlab',
-  \ ]
-
-
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add diagnostic info for https://github.com/itchyny/lightline.vim
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
-
-
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-"Highlight json for coc 
-autocmd FileType json syntax match Comment +\/\/.\+$+
-
-" ref:https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
-" use <c-space>for trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" ref:https://github.com/neoclide/coc.nvim/wiki/Using-snippets
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
-                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
-
-let g:python3_host_prog = '/home/jonatas/.pyenv/versions/3.7.5/envs/py3/bin/python'
-let g:python_host_prog = '/home/jonatas/.pyenv/versions/neovim2/bin/python' 
-
-
-" Limelight config for falcon colorscheme
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
-" Default: 0.5
-let g:limelight_default_coefficient = 0.7
-
-" Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 1
-
-" Beginning/end of paragraph
-"   When there's no empty line between the paragraphs
-"   and each paragraph starts with indentation
-let g:limelight_bop = '^\s'
-let g:limelight_eop = '\ze\n^\s'
-
-" Highlighting priority (default: 10)
-"   Set it to -1 not to overrule hlsearch
-let g:limelight_priority = -1
+""Grammar checker
+" let g:languagetool_server='$HOME/languagetool/languagetool-standalone/target/LanguageTool-4.7-SNAPSHOT/LanguageTool-4.7-SNAPSHOT/languagetool-server.jar'
