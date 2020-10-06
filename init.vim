@@ -181,6 +181,7 @@ let g:neoterm_default_mod = 'vertical'
 "Workaround to open ipython and r in the right split' 
 au FileType python nnoremap <leader>s :T ipython --no-autoindent<CR><C-w>R
 au FileType r nnoremap <leader>s :T R<CR><C-w>R
+au FileType sh nnoremap <leader>s :Tnew<CR><C-w>R
 nnoremap <leader>q :Tclose<CR>
 nnoremap <Space> :TREPLSendLine<CR>
 vnoremap <Space> :TREPLSendSelection<CR> 
