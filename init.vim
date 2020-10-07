@@ -47,18 +47,22 @@
  " Neovim repl
  Plug 'kassio/neoterm'
 
+ " Python auto-formater
+ Plug 'python/black'
+
 " Add plugins to &runtimepath
  call plug#end()
  
 source $HOME/.config/nvim/basic.vim
 source $HOME/.config/nvim/vim-tmux-navigator.vim
 source $HOME/.config/nvim/eleline.vim
-source $HOME/.config/nvim/easyaling.vim
+source $HOME/.config/nvim/vim-easy-align.vim
 source $HOME/.config/nvim/identLine.vim
 source $HOME/.config/nvim/FastFold.vim
 source $HOME/.config/nvim/SimpylFold.vim
 source $HOME/.config/nvim/Vimtex.vim
 source $HOME/.config/nvim/Neoterm.vim
+source $HOME/.config/nvim/black.vim
 source $HOME/.config/nvim/LanguageTool.vim
 
 lua require("lsp_config")
