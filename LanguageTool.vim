@@ -1,2 +1,4 @@
 ""Grammar checker
-" let g:languagetool_server='$HOME/languagetool/languagetool-standalone/target/LanguageTool-4.7-SNAPSHOT/LanguageTool-4.7-SNAPSHOT/languagetool-server.jar'
+
+let g:languagetool_jar='$HOME/languagetool/languagetool-standalone/target/LanguageTool-5.0-SNAPSHOT/LanguageTool-5.0-SNAPSHOT/languagetool-commandline.jar'
+

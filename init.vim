@@ -36,7 +36,7 @@
  "Plug 'benshuailyu/online-thesaurus-vim'
 
  "Assyncrounous grammar checker
- " Plug 'vigoux/LanguageTool.nvim'
+ Plug 'dpelle/vim-LanguageTool'
 
  "IndentLine (show vertical lines on indents)
  Plug 'Yggdroot/indentLine'
