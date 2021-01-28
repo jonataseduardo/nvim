@@ -1,4 +1,5 @@
 local lsp = require'nvim_lsp'
+
 local map = function(type, key, value)
 	vim.fn.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
 end
@@ -43,25 +44,25 @@ lsp.tsserver.setup{on_attach=on_attach_common}
 
 lsp.gopls.setup{on_attach=on_attach_common}
 
-lsp.sumneko_lua.setup{
-	on_attach=on_attach_common,
-	settings = {
-		Lua = {
-			runtime = { version = "LuaJIT", path = vim.split(package.path, ';'), },
-			completion = { keywordSnippet = "Disable", },
-			diagnostics = { enable = true, globals = {
-				"vim", "describe", "it", "before_each", "after_each" },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.expand("~/git/neovim/src/nvim/lua")] = true,
-					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-				}
-			}
-		}
-	}
-}
+--lsp.sumneko_lua.setup{
+--	on_attach=on_attach_common,
+--	settings = {
+--		Lua = {
+--			runtime = { version = "LuaJIT", path = vim.split(package.path, ';'), },
+--			completion = { keywordSnippet = "Disable", },
+--			diagnostics = { enable = true, globals = {
+--				"vim", "describe", "it", "before_each", "after_each" },
+--			},
+--			workspace = {
+--				library = {
+--					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+--					[vim.fn.expand("~/git/neovim/src/nvim/lua")] = true,
+--					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+--				}
+--			}
+--		}
+--	}
+--}
 
 lsp.jdtls.setup{
 	on_attach = on_attach_common,
@@ -71,7 +72,22 @@ require'nvim_lsp'.clangd.setup{
 	on_attach = on_attach_clangd
 }
 require'nvim_lsp'.pyls.setup{
-	on_attach = on_attach_common,
+  on_attach = on_attach_common,
+  settings = {
+    pyls = {
+      plugins = {
+        autopep8 = {enabled = false},
+        black = {enabled = true},
+        flake8 = {enabled = false},
+        jedi_signature_help = {enabled = false},
+        mccabe = {enabled = false},
+        pycodestyle = {enabled = false, maxLineLength = 100},
+        pyflakes = {enabled = false},
+        yapf = {enabled = false},
+        pylint = {enabled = true}
+      }
+    }
+  }
 }
 
 --local strategy = { 'exact', 'substring', 'fuzzy' }
