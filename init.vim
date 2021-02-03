@@ -8,9 +8,19 @@
 
  " Neovim language server
  Plug 'neovim/nvim-lspconfig'
- Plug 'nvim-lua/completion-nvim'
  Plug 'nvim-lua/diagnostic-nvim'
  Plug 'nvim-lua/lsp-status.nvim'
+ Plug 'glepnir/lspsaga.nvim'
+ Plug 'nvim-lua/completion-nvim'
+
+ "Format code
+ "Plug 'lukas-reineke/format.nvim'
+
+"Coloured icons
+ Plug 'kyazdani42/nvim-web-devicons'
+
+ " Bufferline
+ Plug 'akinsho/nvim-bufferline.lua'
 
  "Better highligth
  Plug 'nvim-treesitter/nvim-treesitter'
@@ -50,9 +60,19 @@
  " Python auto-formater
  Plug 'python/black'
 
+ " Python isort (import sort)
+ Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
+
+ " Colorscheme
+ Plug 'NieTiger/halcyon-neovim'
+
 " Add plugins to &runtimepath
  call plug#end()
- 
+
+colorscheme halcyon
+
+"lua require("lsp_config")
+
 source $HOME/.config/nvim/basic.vim
 source $HOME/.config/nvim/vim-tmux-navigator.vim
 source $HOME/.config/nvim/eleline.vim
@@ -63,6 +83,10 @@ source $HOME/.config/nvim/SimpylFold.vim
 source $HOME/.config/nvim/Vimtex.vim
 source $HOME/.config/nvim/Neoterm.vim
 source $HOME/.config/nvim/black.vim
+source $HOME/.config/nvim/isort.vim
+"source $HOME/.config/nvim/format.vim
 source $HOME/.config/nvim/LanguageTool.vim
+source $HOME/.config/nvim/lspsaga.vim
+source $HOME/.config/nvim/completion-nvim.vim
+source $HOME/.config/nvim/bufferline.vim
 
-lua require("lsp_config")
